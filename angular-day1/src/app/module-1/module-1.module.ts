@@ -7,10 +7,10 @@ import { KomponenComponent } from './komponen.component';
 
 @NgModule({
   declarations: [
+    KomponenComponent,
     KomponenNo1Component,
     KomponenNo2Component,
     KomponenNo3Component,
-    KomponenComponent
   ],
   imports: [CommonModule],
 })
