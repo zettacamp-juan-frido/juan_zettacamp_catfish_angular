@@ -1,0 +1,8 @@
+.border {
+  border: 1px solid #fff;
+  background: #dfdfdf;
+}
+.border-red {
+  border: 1px solid #fff;
+  background: red;
+}

@@ -1,0 +1,12 @@
+<!-- <div *ngFor="let item of cardData"> -->
+<div *ngIf="onClick" class="border">
+  <h2>Item {{ DataCard.id }}</h2>
+  <p>{{ DataCard.text }}</p>
+  <app-button (click)="iniClick()"></app-button>
+</div>
+<div *ngIf="!onClick" class="border-red">
+  <h2>Item {{ DataCard.id }}</h2>
+  <p>{{ DataCard.text }}</p>
+  <app-button (click)="iniClick()"></app-button>
+</div>
+<!-- </div> -->
