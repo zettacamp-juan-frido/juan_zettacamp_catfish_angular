@@ -1,0 +1,7 @@
+<div>
+  <app-list-data (AddData)="onAddedButton($event)"></app-list-data>
+  <app-output-data
+    *ngFor="let data of dataUser"
+    [UserData]="data"
+  ></app-output-data>
+</div>
