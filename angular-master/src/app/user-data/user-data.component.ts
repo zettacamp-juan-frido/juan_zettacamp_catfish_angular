@@ -11,17 +11,21 @@ export class UserDataComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  dataUser = [
-    { userName: 'Daniel', statusName: 'bosan' },
-    { userName: 'Daniel', statusName: 'heran' },
-    { userName: 'Daniel', statusName: 'gak tau ngapain' },
-    { userName: 'Daniel', statusName: 'bingung' },
-  ];
+  dataUser = [{ userName: 'Daniel', statusName: 'bosan' }];
 
   onAddedButton(UserData: { UserName: string; StatusName: string }) {
     this.dataUser.push({
       userName: UserData.UserName,
       statusName: UserData.StatusName,
     });
+  }
+
+  onChange() {
+    this.dataUser[0].userName = 'juan';
+    this.dataUser[0].statusName = 'lagi coding';
+  }
+
+  onDestroy() {
+    this.dataUser.splice(0, 1);
   }
 }

@@ -1,8 +1,13 @@
 <div>
   <app-input-list (AddData)="onAddedButton($event)"></app-input-list>
+  <button class="btn" (click)="onChange()">Change</button>
+  <button class="btn" (click)="onDestroy()">Delete</button>
   <app-output-list
     *ngFor="let data of dataUser"
     [UserData]="data"
     class="m-rem1"
-  ></app-output-list>
+  >
+    <div class="" #name>Name: {{ data.userName }}</div>
+    <div class="" #name>Status: {{ data.statusName }}</div>
+  </app-output-list>
 </div>

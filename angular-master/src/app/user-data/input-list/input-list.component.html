@@ -1,4 +1,5 @@
 <div class="m-rem1">
+  <h2>2 ways binding</h2>
   <div><label for="">User Name</label></div>
   <input type="text" [(ngModel)]="newUserName" />
 
@@ -6,4 +7,19 @@
   <input type="text" [(ngModel)]="newStatusName" />
 
   <div><button class="btn" (click)="onAddButton()">Add Data</button></div>
+</div>
+<hr />
+<div class="m-rem1">
+  <h2>local references</h2>
+  <div><label for="">User Name</label></div>
+  <input type="text" #InputName />
+
+  <div>Status</div>
+  <input type="text" #InputStatus />
+
+  <div>
+    <button class="btn" (click)="onAddButtonLocal(InputName)">
+      Add Data With local references
+    </button>
+  </div>
 </div>

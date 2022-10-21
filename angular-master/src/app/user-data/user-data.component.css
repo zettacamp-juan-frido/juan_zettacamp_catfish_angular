@@ -1,0 +1,17 @@
+.m-rem1 {
+  margin: 1rem;
+}
+.ml-1rem {
+  margin-left: 1rem;
+}
+.btn {
+  border: 1px solid #3939ec;
+  background: #3939ec;
+  color: #fff;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 7px;
+}
+.btn:hover {
+  background: #1414c7;
+}
