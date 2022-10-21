@@ -1,0 +1,8 @@
+<div>
+  <app-input-list (AddData)="onAddedButton($event)"></app-input-list>
+  <app-output-list
+    *ngFor="let data of dataUser"
+    [UserData]="data"
+    class="m-rem1"
+  ></app-output-list>
+</div>
