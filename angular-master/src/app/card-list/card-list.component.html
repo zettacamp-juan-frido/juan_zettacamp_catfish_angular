@@ -1,10 +1,12 @@
 <div>
   <app-card-user></app-card-user>
 </div>
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
 <div>
   <app-card-detail
     *ngFor="let acc of users; let i = index"
     [account]="acc"
     [id]="i"
-  ></app-card-detail>
+  >
+  </app-card-detail>
 </div>

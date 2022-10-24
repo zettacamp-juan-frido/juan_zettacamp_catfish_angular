@@ -1,8 +1,16 @@
 <div class="">
   <div class="">
     <div class="">
-      <label>Account Name</label>
-      <input type="text" class="" #accountName />
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Your Name"
+          type="text"
+          class=""
+          #accountName
+        />
+      </mat-form-field>
     </div>
     <div class="">
       <select class="" #status>
@@ -11,7 +19,11 @@
         <option value="hidden">Hidden</option>
       </select>
     </div>
-    <button class="" (click)="onCreateAccount(accountName.value, status.value)">
+    <button
+      mat-button
+      color="primary"
+      (click)="onCreateAccount(accountName.value, status.value)"
+    >
       Add Account
     </button>
   </div>

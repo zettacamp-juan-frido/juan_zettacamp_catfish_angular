@@ -5,7 +5,6 @@ import { UserService } from './user.service';
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.css'],
-  providers: [UserService],
 })
 export class CardListComponent implements OnInit {
   users: { name: string; status: string }[] = [];
