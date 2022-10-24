@@ -31,7 +31,7 @@ export class OutputListComponent
     OnDestroy
 {
   @Input() UserData: { userName: string; statusName: string };
-  // @ViewChild('name') inputName: ElementRef;
+  @ViewChild('name') inputName: ElementRef;
 
   constructor() {
     console.log('menjalankan constructor');
@@ -44,7 +44,7 @@ export class OutputListComponent
   }
   ngOnInit(): void {
     console.log('menjalankan ngOnInit');
-    // console.log('text Content : ' + this.inputName.nativeElement.value);
+    // console.log('text Content : ' + this.inputName.nativeElement.textContent);
   }
   ngDoCheck(): void {
     console.log('menjalankan ngDoCheck');
