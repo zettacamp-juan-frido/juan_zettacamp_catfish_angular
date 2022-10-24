@@ -1,1 +1,18 @@
-<p>card-user works!</p>
+<div class="">
+  <div class="">
+    <div class="">
+      <label>Account Name</label>
+      <input type="text" class="" #accountName />
+    </div>
+    <div class="">
+      <select class="" #status>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+        <option value="hidden">Hidden</option>
+      </select>
+    </div>
+    <button class="" (click)="onCreateAccount(accountName.value, status.value)">
+      Add Account
+    </button>
+  </div>
+</div>
