@@ -1,11 +1,10 @@
 <div>
-  <app-card-user (accountAdded)="onAccountAdded($event)"></app-card-user>
+  <app-card-user></app-card-user>
 </div>
 <div>
   <app-card-detail
     *ngFor="let acc of users; let i = index"
     [account]="acc"
     [id]="i"
-    (statusChanged)="onStatusChanged($event)"
   ></app-card-detail>
 </div>

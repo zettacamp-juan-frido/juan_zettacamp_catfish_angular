@@ -1,4 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-card-user',
@@ -6,17 +7,15 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./card-user.component.css'],
 })
 export class CardUserComponent implements OnInit {
-  constructor() {}
+  constructor(private userService: UserService) {
+    this.userService.statusUpdated.subscribe((status: string) =>
+      alert('New Status ' + status)
+    );
+  }
 
   ngOnInit(): void {}
 
-  @Output() accountAdded = new EventEmitter<{ name: string; status: string }>();
-
   onCreateAccount(accountName: string, accountStatus: string) {
-    this.accountAdded.emit({
-      name: accountName,
-      status: accountStatus,
-    });
-    console.log('A server status changed, new status: ' + accountStatus);
+    this.userService.addAccount(accountName, accountStatus);
   }
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-card-detail',
@@ -6,19 +8,15 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./card-detail.component.css'],
 })
 export class CardDetailComponent implements OnInit {
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
 
   @Input() account: { name: string; status: string };
   @Input() id: number;
-  @Output() statusChanged = new EventEmitter<{
-    id: number;
-    newStatus: string;
-  }>();
 
   onSetTo(status: string) {
-    this.statusChanged.emit({ id: this.id, newStatus: status });
-    console.log('A server status changed, new status: ' + status);
+    this.userService.updateStatus(this.id, status);
+    this.userService.statusUpdated.emit(status);
   }
 }

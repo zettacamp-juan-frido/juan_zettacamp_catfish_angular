@@ -1,35 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.css'],
+  providers: [UserService],
 })
 export class CardListComponent implements OnInit {
-  constructor() {}
+  users: { name: string; status: string }[] = [];
+  constructor(private userService: UserService) {}
 
-  ngOnInit(): void {}
-
-  users = [
-    {
-      name: 'Master Account',
-      status: 'active',
-    },
-    {
-      name: 'Testaccount',
-      status: 'inactive',
-    },
-    {
-      name: 'Hidden Account',
-      status: 'unknown',
-    },
-  ];
-
-  onAccountAdded(newAccount: { name: string; status: string }) {
-    this.users.push(newAccount);
-  }
-
-  onStatusChanged(updateInfo: { id: number; newStatus: string }) {
-    this.users[updateInfo.id].status = updateInfo.newStatus;
+  ngOnInit(): void {
+    this.users = this.userService.user;
   }
 }
