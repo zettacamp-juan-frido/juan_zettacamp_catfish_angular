@@ -4,20 +4,7 @@ import { LoggingService } from './logging.service';
 
 @Injectable()
 export class UserService {
-  user = [
-    {
-      name: 'Master Account',
-      status: 'active',
-    },
-    {
-      name: 'Testaccount',
-      status: 'inactive',
-    },
-    {
-      name: 'Hidden Account',
-      status: 'unknown',
-    },
-  ];
+  user = [];
   statusUpdated = new EventEmitter<string>();
 
   constructor(private loggingService: LoggingService) {}
