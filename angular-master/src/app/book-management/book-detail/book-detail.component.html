@@ -1,1 +1,12 @@
-<p>book-detail works!</p>
+<div *ngIf="arayBook">
+  <p>book-detail works!</p>
+
+  <div>Name: {{ arayBook.name }}</div>
+  <div>Author: {{ arayBook.author }}</div>
+  <button type="button" (click)="closeDetail()">Close</button>
+
+  <div>
+    <div>Publisher: {{ arayBook.publisher.names }}</div>
+    <div>Date: {{ arayBook.publisher.date }}</div>
+  </div>
+</div>
