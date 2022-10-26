@@ -2,17 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { BookManagementComponent } from './book-management/book-management.component';
+import { BookManagementModule } from './book-management/book-management.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BookManagementComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, BookManagementModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
