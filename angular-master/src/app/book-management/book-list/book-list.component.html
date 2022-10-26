@@ -1,1 +1,7 @@
-<p>book-list works!</p>
+<div>
+  <p>book-list works!</p>
+  <app-book-card
+    *ngFor="let book of arayBook"
+    [dataBook]="book"
+  ></app-book-card>
+</div>
