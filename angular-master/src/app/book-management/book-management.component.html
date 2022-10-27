@@ -1,4 +1,12 @@
-<div class="split">
-  <div><app-book-list></app-book-list></div>
-  <div *ngIf="arayBook"><app-book-details></app-book-details></div>
+<div>
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="list">Book</a></li>
+  </ul>
+</div>
+
+<div>
+  <h1>Home Page</h1>
+  <router-outlet></router-outlet>
+  <!-- <div *ngIf="arayBook"><app-book-details></app-book-details></div> -->
 </div>

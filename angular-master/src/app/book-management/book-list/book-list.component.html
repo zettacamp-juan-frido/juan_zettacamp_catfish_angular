@@ -4,4 +4,6 @@
     *ngFor="let book of arayBook"
     [dataBook]="book"
   ></app-book-card>
+  <div *ngIf="arayBook"><app-book-details></app-book-details></div>
+  <!-- <router-outlet></router-outlet> -->
 </div>

@@ -3,6 +3,13 @@
   <div>{{ dataBook.author }}</div>
   <div>{{ dataBook.publisher.names }}</div>
   <div>
+    <!-- <button
+      type="button"
+      [routerLink]="['/details', dataBook.name]"
+      (click)="selectBook()"
+    >
+      Details
+    </button> -->
     <button type="button" (click)="selectBook()">Details</button>
   </div>
 </div>

@@ -37,5 +37,12 @@ export class BookManagementService {
     this.selectedBook.next(null);
     console.log(this.selectedBook);
   }
+
+  selectBook(name: string) {
+    const DataBook = this.dataBook.find((i) => {
+      return i.name === name;
+    });
+    return DataBook;
+  }
   constructor() {}
 }
