@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-input',
@@ -12,7 +14,11 @@ export class UserInputComponent implements OnInit {
   status = ['Married', 'Single'];
   inputForm: FormGroup;
 
-  constructor() {}
+  constructor(
+    private userService: UsersService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.inputForm = new FormGroup({
@@ -28,6 +34,10 @@ export class UserInputComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.inputForm);
+    console.log('ini form', this.inputForm);
+
+    const upload = this.inputForm.value;
+    this.userService.addUser(upload);
+    console.log('di kirim ke service', this.userService);
   }
 }
