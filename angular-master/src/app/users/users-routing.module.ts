@@ -12,6 +12,7 @@ const routes: Routes = [
     path: 'user',
     component: UserInputComponent,
   },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

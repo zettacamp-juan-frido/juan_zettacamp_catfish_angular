@@ -39,5 +39,7 @@ export class UserInputComponent implements OnInit {
     const upload = this.inputForm.value;
     this.userService.addUser(upload);
     console.log('di kirim ke service', this.userService);
+
+    this.router.navigate(['/home']);
   }
 }

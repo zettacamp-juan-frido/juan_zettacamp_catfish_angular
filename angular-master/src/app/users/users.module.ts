@@ -8,9 +8,10 @@ import { UserInputComponent } from './user-input/user-input.component';
 import { UsersComponent } from '../users/users.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { UsersService } from './users.service';
+import { UserOutputComponent } from './home-user/user-output/user-output.component';
 
 @NgModule({
-  declarations: [HomeUserComponent, UserInputComponent, UsersComponent],
+  declarations: [HomeUserComponent, UserInputComponent, UsersComponent, UserOutputComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
