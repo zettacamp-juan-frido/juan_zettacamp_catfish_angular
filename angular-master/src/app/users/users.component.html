@@ -1,0 +1,32 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Users</span>
+  </mat-toolbar>
+
+  <mat-drawer-container class="container">
+    <mat-drawer #drawer mode="side" opened="true">
+      <mat-list role="list">
+        <mat-list-item
+          role="listitem"
+          routerLink="home"
+          [queryParams]="{ color: 'red' }"
+          routerLinkActive="active"
+          >Home
+        </mat-list-item>
+        <mat-list-item
+          role="listitem"
+          routerLink="user"
+          routerLinkActive="active"
+        >
+          User</mat-list-item
+        >
+      </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

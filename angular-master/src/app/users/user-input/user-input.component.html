@@ -1,0 +1,114 @@
+<form class="form" [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+  <div class="form-colum">
+    <mat-form-field appearance="fill">
+      <mat-label>Id Number</mat-label>
+      <input matInput type="text" id="idNumber" formControlName="idNumber" />
+
+      <mat-error
+        *ngIf="
+          !inputForm.get('idNumber').valid && inputForm.get('idNumber').touched
+        "
+      >
+        ID number is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" id="name" formControlName="name" />
+
+      <mat-error
+        *ngIf="!inputForm.get('name').valid && inputForm.get('name').touched"
+      >
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" id="age" formControlName="age" />
+
+      <mat-error
+        *ngIf="!inputForm.get('age').valid && inputForm.get('age').touched"
+      >
+        Age is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-radio-group aria-label="Select an option" formControlName="gender">
+      <label for="">Gender</label>
+      <hr />
+      <mat-radio-button
+        *ngFor="let choice of gender"
+        name="gender"
+        [value]="choice"
+      >
+        {{ choice }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="form-colum">
+    <mat-form-field appearance="fill">
+      <mat-label>email</mat-label>
+      <input matInput type="text" id="email" formControlName="email" />
+
+      <mat-error
+        *ngIf="!inputForm.get('email').valid && inputForm.get('email').touched"
+      >
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Position</mat-label>
+      <mat-select formControlName="position" placeholder="Full Stack">
+        <mat-option
+          *ngFor="let choice of position"
+          name="position"
+          [value]="choice"
+        >
+          {{ choice }}
+        </mat-option>
+      </mat-select>
+
+      <mat-error
+        *ngIf="
+          !inputForm.get('position').valid && inputForm.get('position').touched
+        "
+      >
+        Position is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Martial Status</mat-label>
+      <mat-select formControlName="status" placeholder="Single">
+        <mat-option
+          *ngFor="let choice of status"
+          name="status"
+          [value]="choice"
+        >
+          {{ choice }}
+        </mat-option>
+      </mat-select>
+
+      <mat-error
+        *ngIf="
+          !inputForm.get('status').valid && inputForm.get('status').touched
+        "
+      >
+        Status is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary">Submit</button>
+  </div>
+
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Textarea</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field> -->
+  <mat-error *ngIf="!inputForm.valid && inputForm.touched">
+    Please Enter Valid <strong>Data</strong>
+  </mat-error>
+</form>

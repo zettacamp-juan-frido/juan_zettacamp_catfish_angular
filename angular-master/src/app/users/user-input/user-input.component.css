@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  align-items: flex-start;
+  margin: 1rem;
+}
+.form-colum {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+  margin-bottom: 1rem;
+}
+mat-form-field {
+  margin-top: 10px;
+}
