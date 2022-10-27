@@ -9,9 +9,10 @@ import { UsersComponent } from '../users/users.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { UsersService } from './users.service';
 import { UserOutputComponent } from './home-user/user-output/user-output.component';
+import { UserEditComponent } from './home-user/user-edit/user-edit.component';
 
 @NgModule({
-  declarations: [HomeUserComponent, UserInputComponent, UsersComponent, UserOutputComponent],
+  declarations: [HomeUserComponent, UserInputComponent, UsersComponent, UserOutputComponent, UserEditComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,

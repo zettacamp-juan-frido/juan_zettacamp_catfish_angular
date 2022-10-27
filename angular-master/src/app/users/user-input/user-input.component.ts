@@ -9,7 +9,7 @@ import { UsersService } from '../users.service';
   styleUrls: ['./user-input.component.css'],
 })
 export class UserInputComponent implements OnInit {
-  gender = ['Male', 'Female'];
+  gander = ['Male', 'Female'];
   position = ['Front end', 'Back End', 'Full Stack'];
   status = ['Married', 'Single'];
   inputForm: FormGroup;
@@ -26,7 +26,7 @@ export class UserInputComponent implements OnInit {
       idNumber: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
       age: new FormControl(null, Validators.required),
-      gender: new FormControl(''),
+      gander: new FormControl(''),
       email: new FormControl(null, [Validators.required, Validators.email]),
       position: new FormControl(null, Validators.required),
       status: new FormControl(null, Validators.required),

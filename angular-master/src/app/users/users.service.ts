@@ -21,9 +21,9 @@ export class UsersService {
   listUser = new BehaviorSubject(this.userData);
   listUser$ = this.listUser.asObservable();
 
-  // getUser(){
-
-  // }
+  getUser() {
+    return this.listUser.getValue();
+  }
 
   addUser(user: any) {
     this.userData.push(user);
@@ -31,5 +31,12 @@ export class UsersService {
 
     this.listUser.next(this.userData);
     console.log(this.listUser);
+  }
+
+  updateUser(user: any) {
+    const data = this.getUser().map((i) => {
+      return i.idNumber === user.idNumber ? user : i;
+    });
+    this.listUser.next(data);
   }
 }

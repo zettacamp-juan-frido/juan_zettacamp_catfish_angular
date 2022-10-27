@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-output',
@@ -15,7 +16,15 @@ export class UserOutputComponent implements OnInit {
     position: string;
     status: string;
   };
-  constructor() {}
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  onEdit() {
+    this.router.navigate(['edit'], {
+      queryParams: { userID: this.dataUser.idNumber },
+    });
+    // this.router.navigate(['user']);
+  }
 }
