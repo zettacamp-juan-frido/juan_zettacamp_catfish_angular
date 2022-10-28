@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+  FormArray,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first, Subscription } from 'rxjs';
 import { UsersService } from '../../users.service';
@@ -21,26 +27,46 @@ export class UserEditComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    this.inputForm = new FormGroup({
-      idNumber: new FormControl(null, Validators.required),
-      name: new FormControl(null, Validators.required),
-      age: new FormControl(null, Validators.required),
-      gander: new FormControl('', Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      position: new FormControl(null, Validators.required),
-      status: new FormControl(null, Validators.required),
-      address: new FormGroup({
-        addressName: new FormControl(null, Validators.required),
-        zipCode: new FormControl(null, Validators.required),
-        city: new FormControl(null, Validators.required),
-        country: new FormControl(null, Validators.required),
-      }),
-    });
+    this.initForm();
+    this.editForm();
+  }
 
+  initForm() {
+    this.inputForm = this.fb.group({
+      idNumber: [null, Validators.required],
+      name: [null, Validators.required],
+      age: [null, Validators.required],
+      gander: ['', Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      position: [null, Validators.required],
+      status: [null, Validators.required],
+      address: this.fb.array([]),
+    });
+  }
+
+  get FormControlItem() {
+    return this.inputForm.get('address') as FormArray;
+  }
+
+  // itemAddress.forEach(element => {
+  //   this.
+  // });
+
+  createItem(): FormGroup {
+    return this.fb.group({
+      addressName: new FormControl(null, Validators.required),
+      zipCode: new FormControl(null, Validators.required),
+      city: new FormControl(null, Validators.required),
+      country: new FormControl(null, Validators.required),
+    });
+  }
+
+  editForm() {
     const id = this.route.snapshot.queryParamMap.get('userID');
     this.isEdit = id != null;
 
@@ -59,6 +85,12 @@ export class UserEditComponent implements OnInit {
     console.log(this.inputForm);
   }
 
+  //button function
+
+  onAddNewAddress() {
+    this.FormControlItem.push(this.createItem());
+  }
+
   onSubmit() {
     console.log('ini form', this.inputForm);
 
@@ -68,4 +100,5 @@ export class UserEditComponent implements OnInit {
 
     this.router.navigate(['/home']);
   }
+  //button function
 }

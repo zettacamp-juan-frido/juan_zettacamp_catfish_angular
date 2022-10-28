@@ -4,6 +4,8 @@ import {
   FormControl,
   Validators,
   FormControlName,
+  FormBuilder,
+  FormArray,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../users.service';
@@ -18,31 +20,65 @@ export class UserInputComponent implements OnInit {
   position = ['Front end', 'Back End', 'Full Stack'];
   status = ['Married', 'Single'];
   inputForm: FormGroup;
+  data: any;
 
   constructor(
     private userService: UsersService,
-    private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    this.inputForm = new FormGroup({
-      idNumber: new FormControl(null, Validators.required),
-      name: new FormControl(null, Validators.required),
-      age: new FormControl(null, Validators.required),
-      gander: new FormControl('', Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      position: new FormControl(null, Validators.required),
-      status: new FormControl(null, Validators.required),
-      address: new FormGroup({
-        addressName: new FormControl(null, Validators.required),
-        zipCode: new FormControl(null, Validators.required),
-        city: new FormControl(null, Validators.required),
-        country: new FormControl(null, Validators.required),
-      }),
+    this.initForm();
+  }
+
+  initForm() {
+    this.inputForm = this.fb.group({
+      idNumber: [null, Validators.required],
+      name: [null, Validators.required],
+      age: [null, Validators.required],
+      gander: ['', Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      position: [null, Validators.required],
+      status: [null, Validators.required],
+      address: this.fb.array([]),
     });
   }
 
+  // patchValueForm() {
+  //   const {idNumber,name,age,gander,email,position,status,address} = this.data.order
+  //   const data = {
+  //     idNumber,
+  //     name,
+  //     age,
+  //     gander,
+  //     email,
+  //     position,
+  //     status,
+  //     address,
+  //   };
+  //   address.forEach(element => {
+  //     this.FormControlItem.push(this.createItem())
+  //   });
+
+  // }
+
+  get FormControlItem() {
+    return this.inputForm.get('address') as FormArray;
+  }
+
+  createItem(): FormGroup {
+    return this.fb.group({
+      addressName: new FormControl(null, Validators.required),
+      zipCode: new FormControl(null, Validators.required),
+      city: new FormControl(null, Validators.required),
+      country: new FormControl(null, Validators.required),
+    });
+  }
+
+  onAddNewAddress() {
+    this.FormControlItem.push(this.createItem());
+  }
   onSubmit() {
     console.log('ini form', this.inputForm);
 

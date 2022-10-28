@@ -16,12 +16,20 @@ export class UsersService {
       email: 'juan@gmail.com',
       position: 'Full Stack',
       status: 'Single',
-      address: {
-        addressName: 'Jl Kh Zaenal Arifin',
-        zipCode: '22502',
-        city: 'Tegal',
-        country: 'Indonesia',
-      },
+      address: [
+        {
+          addressName: 'Jl Kh Zaenal Arifin',
+          zipCode: '22502',
+          city: 'Tegal',
+          country: 'Indonesia',
+        },
+        {
+          addressName: 'Jl Kh Zaenal Arifin',
+          zipCode: '2302',
+          city: 'Jakarta',
+          country: 'Indonesia',
+        },
+      ],
     },
   ];
   listUser = new BehaviorSubject(this.userData);
