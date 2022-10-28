@@ -14,7 +14,7 @@ const routes: Routes = [
     component: UserInputComponent,
   },
   { path: 'edit', component: UserEditComponent },
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

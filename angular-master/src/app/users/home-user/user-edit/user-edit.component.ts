@@ -13,7 +13,7 @@ export class UserEditComponent implements OnInit {
   gander = ['Male', 'Female'];
   position = ['Front end', 'Back End', 'Full Stack'];
   status = ['Married', 'Single'];
-  // inputForm: FormGroup;
+  inputForm: FormGroup;
 
   isEdit: boolean = false;
   subcription?: Subscription;
@@ -24,17 +24,23 @@ export class UserEditComponent implements OnInit {
     private router: Router
   ) {}
 
-  inputForm = new FormGroup({
-    // inputValidate: new FormGroup({}),
-    idNumber: new FormControl('', Validators.required),
-    name: new FormControl(null, Validators.required),
-    age: new FormControl(null, Validators.required),
-    gander: new FormControl('', Validators.required),
-    email: new FormControl(null, [Validators.required, Validators.email]),
-    position: new FormControl(null, Validators.required),
-    status: new FormControl(null, Validators.required),
-  });
   ngOnInit(): void {
+    this.inputForm = new FormGroup({
+      idNumber: new FormControl(null, Validators.required),
+      name: new FormControl(null, Validators.required),
+      age: new FormControl(null, Validators.required),
+      gander: new FormControl('', Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      position: new FormControl(null, Validators.required),
+      status: new FormControl(null, Validators.required),
+      address: new FormGroup({
+        addressName: new FormControl(null, Validators.required),
+        zipCode: new FormControl(null, Validators.required),
+        city: new FormControl(null, Validators.required),
+        country: new FormControl(null, Validators.required),
+      }),
+    });
+
     const id = this.route.snapshot.queryParamMap.get('userID');
     this.isEdit = id != null;
 

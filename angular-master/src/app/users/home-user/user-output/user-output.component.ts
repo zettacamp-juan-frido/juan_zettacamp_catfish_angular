@@ -15,6 +15,12 @@ export class UserOutputComponent implements OnInit {
     email: string;
     position: string;
     status: string;
+    address: {
+      addressName: string;
+      zipCode: string;
+      city: string;
+      country: string;
+    };
   };
 
   constructor(private router: Router) {}

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormControlName,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../users.service';
 
@@ -22,14 +27,19 @@ export class UserInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.inputForm = new FormGroup({
-      // inputValidate: new FormGroup({}),
       idNumber: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
       age: new FormControl(null, Validators.required),
-      gander: new FormControl(''),
+      gander: new FormControl('', Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
       position: new FormControl(null, Validators.required),
       status: new FormControl(null, Validators.required),
+      address: new FormGroup({
+        addressName: new FormControl(null, Validators.required),
+        zipCode: new FormControl(null, Validators.required),
+        city: new FormControl(null, Validators.required),
+        country: new FormControl(null, Validators.required),
+      }),
     });
   }
 
