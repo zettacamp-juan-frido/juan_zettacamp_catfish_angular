@@ -179,16 +179,17 @@
         Add
       </button>
       <div *ngFor="let element of FormControlItem.controls; let i = index">
-        <mat-form-field appearance="fill">
-          <mat-label> {{ element }} </mat-label>
-          <input
-            matInput
-            type="text"
-            id="element-{{ i }}"
-            [formControlName]="i"
-          />
+        <div [formGroupName]="i">
+          <mat-form-field appearance="fill">
+            <mat-label> Address </mat-label>
+            <input
+              matInput
+              type="text"
+              id="element-{{ i }}"
+              formControlName="addressName"
+            />
 
-          <!-- <mat-error
+            <!-- <mat-error
             *ngIf="
               !inputForm.get('element.i').valid &&
               inputForm.get('element.i').touched
@@ -196,7 +197,8 @@
           >
             City is <strong>required</strong>
           </mat-error> -->
-        </mat-form-field>
+          </mat-form-field>
+        </div>
       </div>
     </div>
     <button mat-raised-button type="submit" color="primary">Submit</button>
