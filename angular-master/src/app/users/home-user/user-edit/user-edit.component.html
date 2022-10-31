@@ -1,4 +1,5 @@
 <form class="form" [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+  <!-- split form 1 -->
   <div class="form-colum">
     <mat-form-field appearance="fill">
       <mat-label>Id Number</mat-label>
@@ -46,44 +47,11 @@
         {{ choice }}
       </mat-radio-button>
     </mat-radio-group>
-
-    <!--Form Group Address-->
-    <!-- <div formGroupName="address">
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input
-          matInput
-          type="text"
-          id="addressName"
-          formControlName="addressName"
-        />
-
-        <mat-error
-          *ngIf="
-            !inputForm.get('address.addressName').valid &&
-            inputForm.get('address.addressName').touched
-          "
-        >
-          IAddress is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Zip Code</mat-label>
-        <input matInput type="text" id="zipCode" formControlName="zipCode" />
-
-        <mat-error
-          *ngIf="
-            !inputForm.get('address.zipCode').valid &&
-            inputForm.get('address.zipCode').touched
-          "
-        >
-          Zip Code is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-    </div> -->
-    <!--Form Group Address-->
+    <button mat-raised-button type="submit" color="primary">Submit</button>
   </div>
+  <!-- split form 1 -->
 
+  <!-- split form 2 -->
   <div class="form-colum">
     <mat-form-field appearance="fill">
       <mat-label>email</mat-label>
@@ -137,70 +105,97 @@
         Status is <strong>required</strong>
       </mat-error>
     </mat-form-field>
+  </div>
+  <!-- split form 2 -->
 
-    <!--Form Group Address-->
-    <!-- <div formGroupName="address">
-      <mat-form-field appearance="fill">
-        <mat-label>City</mat-label>
-        <input matInput type="text" id="city" formControlName="city" />
-
-        <mat-error
-          *ngIf="
-            !inputForm.get('address.city').valid &&
-            inputForm.get('address.city').touched
-          "
-        >
-          City is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Country</mat-label>
-        <input matInput type="text" id="country" formControlName="country" />
-
-        <mat-error
-          *ngIf="
-            !inputForm.get('address.country').valid &&
-            inputForm.get('address.country').touched
-          "
-        >
-          Country is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-    </div> -->
-    <!--Form Group Address-->
-
-    <div formArrayName="address">
-      <button
-        mat-raised-button
-        type="button"
-        (click)="onAddNewAddress()"
-        color="primary"
-      >
-        Add
-      </button>
-      <div *ngFor="let element of FormControlItem.controls; let i = index">
+  <!-- add new address -->
+  <div formArrayName="address">
+    <button
+      mat-raised-button
+      type="button"
+      (click)="onAddNewAddress()"
+      color="primary"
+    >
+      Add Address
+    </button>
+    <div *ngFor="let element of FormControlItem.controls; let i = index">
+      <div [formGroupName]="i">
         <mat-form-field appearance="fill">
-          <mat-label>City</mat-label>
+          <mat-label> Address </mat-label>
           <input
             matInput
             type="text"
-            id="FormControlItem-{{ i }}"
-            [formControlName]="i"
+            id="element-{{ i }}"
+            formControlName="addressName"
           />
 
-          <mat-error
+          <!-- <mat-error
+            *ngIf="!inputForm.get('i').valid && inputForm.get('i').touched"
+          >
+            City is <strong>required</strong>
+          </mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label> zipCode</mat-label>
+          <input
+            matInput
+            type="text"
+            id="element-{{ i }}"
+            formControlName="zipCode"
+          />
+
+          <!-- <mat-error
+          *ngIf="
+            !inputForm.get('element.i').valid &&
+            inputForm.get('element.i').touched
+          "
+        >
+          City is <strong>required</strong>
+        </mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label> City </mat-label>
+          <input
+            matInput
+            type="text"
+            id="element-{{ i }}"
+            formControlName="city"
+          />
+
+          <!-- <mat-error
+          *ngIf="
+            !inputForm.get('element.i').valid &&
+            inputForm.get('element.i').touched
+          "
+        >
+          City is <strong>required</strong>
+        </mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label> Country </mat-label>
+          <input
+            matInput
+            type="text"
+            id="element-{{ i }}"
+            formControlName="country"
+          />
+
+          <!-- <mat-error
             *ngIf="
               !inputForm.get('element.i').valid &&
               inputForm.get('element.i').touched
             "
           >
             City is <strong>required</strong>
-          </mat-error>
+          </mat-error> -->
         </mat-form-field>
       </div>
     </div>
-    <button mat-raised-button type="submit" color="primary">Submit</button>
   </div>
+  <!-- add new address -->
 
   <!-- <mat-form-field appearance="fill">
     <mat-label>Textarea</mat-label>

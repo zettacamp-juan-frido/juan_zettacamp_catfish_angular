@@ -10,14 +10,22 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { UsersService } from './users.service';
 import { UserOutputComponent } from './home-user/user-output/user-output.component';
 import { UserEditComponent } from './home-user/user-edit/user-edit.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
-  declarations: [HomeUserComponent, UserInputComponent, UsersComponent, UserOutputComponent, UserEditComponent],
+  declarations: [
+    HomeUserComponent,
+    UserInputComponent,
+    UsersComponent,
+    UserOutputComponent,
+    UserEditComponent,
+  ],
   imports: [
     CommonModule,
     UsersRoutingModule,
     AngularMaterialModule,
     ReactiveFormsModule,
+    SweetAlert2Module,
   ],
   exports: [UsersComponent],
   providers: [UsersService],

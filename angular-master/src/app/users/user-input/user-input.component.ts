@@ -8,6 +8,8 @@ import {
   FormArray,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -19,7 +21,9 @@ export class UserInputComponent implements OnInit {
   gander = ['Male', 'Female'];
   position = ['Front end', 'Back End', 'Full Stack'];
   status = ['Married', 'Single'];
-  inputForm: FormGroup;
+
+  inputForm!: FormGroup;
+  submitted = false;
   data: any;
 
   constructor(
@@ -30,13 +34,15 @@ export class UserInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    // this.inputForm.valueChanges.subscribe((value) => console.log(value));
+    // this.inputForm.statusChanges.subscribe((status) => console.log(status));
   }
 
   initForm() {
     this.inputForm = this.fb.group({
       idNumber: [null, Validators.required],
       name: [null, Validators.required],
-      age: [null, Validators.required],
+      age: [null, Validators.required, this.forbidden.bind(this)],
       gander: ['', Validators.required],
       email: [null, [Validators.required, Validators.email]],
       position: [null, Validators.required],
@@ -76,16 +82,51 @@ export class UserInputComponent implements OnInit {
     });
   }
 
+  forbidden(control: FormControl): Promise<any> | Observable<any> {
+    // const nameRegexp: RegExp = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    const numbers = '10';
+    const promise = new Promise<any>((resolve, reject) => {
+      if (control.value <= numbers) {
+        resolve({ ageForbidden: true });
+      } else {
+        resolve({ ageForbidden: false });
+      }
+    });
+    return promise;
+    // if (control.value && nameRegexp.test(control.value)) {
+    //   return { nameForbidden: true };
+    // }
+    // if (control.value < numbers) {
+    //   return { ageForbidden: true };
+    // }
+    // return null;
+  }
+
+  // function for button
   onAddNewAddress() {
     this.FormControlItem.push(this.createItem());
   }
   onSubmit() {
+    this.submitted = true;
     console.log('ini form', this.inputForm);
+    if (this.inputForm.invalid) {
+      Swal.fire({
+        title: 'Data not Complete',
+        text: 'Please Complete Data',
+        icon: 'error',
+      });
+      return;
+    } else {
+      Swal.fire({
+        title: 'Success',
+        text: 'Data input',
+        icon: 'success',
+      });
+      const upload = this.inputForm.value;
+      this.userService.addUser(upload);
+      console.log('di kirim ke service', this.userService);
 
-    const upload = this.inputForm.value;
-    this.userService.addUser(upload);
-    console.log('di kirim ke service', this.userService);
-
-    this.router.navigate(['/home']);
+      this.router.navigate(['/home']);
+    }
   }
 }

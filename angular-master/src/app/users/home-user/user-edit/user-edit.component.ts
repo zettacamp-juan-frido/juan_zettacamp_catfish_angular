@@ -71,17 +71,35 @@ export class UserEditComponent implements OnInit {
     this.isEdit = id != null;
 
     if (this.isEdit) {
+      // this.subcription = this.userService.listUser$
+      //   .pipe(first((users) => users.length !== 0))
+      //   .subscribe((users) => {
+      //     const user = users.find((user) => {
+      //       if (user.idNumber === id) {
+      //         for (let i = 0; i < user.address.length; i++) {
+      //           this.FormControlItem.push(this.createItem());
+      //         }
+      //       }
+      //     });
+      //     this.setformValue(user);
+      //   });
+
       this.subcription = this.userService.listUser$
         .pipe(first((users) => users.length !== 0))
         .subscribe((users) => {
           const user = users.find((user) => user.idNumber === id);
+          this.FormControlItem.push(this.createItem());
           this.setformValue(user);
         });
     }
   }
 
   setformValue(user: any) {
-    this.inputForm.setValue(user);
+    for (let i = 0; i < user.address.length; i++) {
+      // const element = array[i];
+      this.FormControlItem.push(this.createItem());
+    }
+    this.inputForm.patchValue(user);
     console.log(this.inputForm);
   }
 
