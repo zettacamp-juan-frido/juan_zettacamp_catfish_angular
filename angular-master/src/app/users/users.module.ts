@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { HomeUserComponent } from './home-user/home-user.component';
@@ -11,6 +11,7 @@ import { UsersService } from './users.service';
 import { UserOutputComponent } from './home-user/user-output/user-output.component';
 import { UserEditComponent } from './home-user/user-edit/user-edit.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FilterSearchPipe } from './filter-search.pipe';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AngularMaterialModule,
     ReactiveFormsModule,
     SweetAlert2Module,
+    FormsModule,
   ],
   exports: [UsersComponent],
-  providers: [UsersService],
+  providers: [UsersService, FilterSearchPipe],
 })
 export class UsersModule {}

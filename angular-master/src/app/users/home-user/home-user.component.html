@@ -1,4 +1,9 @@
-<p>home-user works!</p>
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Search</mat-label>
+  <input matInput placeholder="Ex. Pizza" [formControl]="searchUser" />
+</mat-form-field>
+<br />
+<br />
 <app-user-output
   *ngFor="let data of dataUser"
   [dataUser]="data"
