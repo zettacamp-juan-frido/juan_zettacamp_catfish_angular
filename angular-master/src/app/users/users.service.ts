@@ -45,13 +45,13 @@ export class UsersService {
       status: 'Single',
       address: [
         {
-          addressName: 'Jl Kh Zaenal Arifin',
+          addressName: 'JL.Panggung 4',
           zipCode: '22502',
           city: 'Tegal',
           country: 'Indonesia',
         },
         {
-          addressName: 'Jl Kh Zaenal Arifin',
+          addressName: 'JL.Cempaka Warna 2',
           zipCode: '2302',
           city: 'Jakarta',
           country: 'Indonesia',
