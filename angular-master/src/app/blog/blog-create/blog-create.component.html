@@ -1,0 +1,21 @@
+<p>blog-create works!</p>
+<div>
+  <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+    <input id="userId" formControlName="userId" />
+    <br />
+    <br />
+    <input id="title" formControlName="title" />
+    <br />
+    <br />
+    <textarea
+      id="body"
+      formControlName="body"
+      id=""
+      cols="30"
+      rows="10"
+    ></textarea>
+    <br />
+    <br />
+    <button type="submit">Submit</button>
+  </form>
+</div>

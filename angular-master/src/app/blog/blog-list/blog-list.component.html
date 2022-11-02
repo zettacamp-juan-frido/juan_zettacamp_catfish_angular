@@ -1,1 +1,15 @@
-<p>blog-list works!</p>
+<header>
+  <p>blog-list works!</p>
+</header>
+<main>
+  <button (click)="getPost()">Get post</button>
+  <button (click)="createBlog()">Create Blog</button>
+  <div *ngFor="let list of post | async">
+    <h2>
+      {{ list.title }}
+    </h2>
+    <p>
+      {{ list.body }}
+    </p>
+  </div>
+</main>
