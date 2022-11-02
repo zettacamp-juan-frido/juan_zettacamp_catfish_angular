@@ -88,7 +88,7 @@ export class UserEditComponent implements OnInit {
         .pipe(first((users) => users.length !== 0))
         .subscribe((users) => {
           const user = users.find((user) => user.idNumber === id);
-          this.FormControlItem.push(this.createItem());
+          // this.FormControlItem.push(this.createItem());
           this.setformValue(user);
         });
     }
@@ -97,7 +97,8 @@ export class UserEditComponent implements OnInit {
   setformValue(user: any) {
     for (let i = 0; i < user.address.length; i++) {
       // const element = array[i];
-      this.FormControlItem.push(this.createItem());
+      // this.FormControlItem.push(this.createItem());
+      this.onAddNewAddress();
     }
     this.inputForm.patchValue(user);
     console.log(this.inputForm);

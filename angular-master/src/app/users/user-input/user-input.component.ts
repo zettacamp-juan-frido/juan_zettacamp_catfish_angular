@@ -42,7 +42,7 @@ export class UserInputComponent implements OnInit {
     this.inputForm = this.fb.group({
       idNumber: [null, Validators.required],
       name: [null, Validators.required],
-      age: [null, Validators.required, this.forbidden.bind(this)],
+      age: [null, [Validators.required, Validators.min(10)]],
       gander: ['', Validators.required],
       email: [null, [Validators.required, Validators.email]],
       position: [null, Validators.required],

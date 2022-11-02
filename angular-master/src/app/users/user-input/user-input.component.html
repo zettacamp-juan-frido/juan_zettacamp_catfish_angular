@@ -39,7 +39,7 @@
         Age is <strong>required</strong>
       </mat-error>
 
-      <mat-error *ngIf="inputForm.get('age').errors['ageForbidden']">
+      <mat-error *ngIf="inputForm.get('age').hasError('min')">
         age need more than 10
       </mat-error>
     </mat-form-field>
