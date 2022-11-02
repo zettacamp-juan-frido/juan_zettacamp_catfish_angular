@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {
+  HttpClient,
+  HttpHandler,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Blog } from './blog.model';
 
 @Injectable({
@@ -24,6 +29,14 @@ export class BlogServiceService {
 
   getPosts(): Observable<Blog[]> {
     return this.http.get<Blog[]>(encodeURI(this.blogUrl + '/posts'));
+  }
+
+  getIdPosts(id: string): Observable<Blog> {
+    const url = this.blogUrl + '/posts';
+    const ids = new HttpParams().set('id', id);
+    return this.http
+      .get<Blog>(encodeURI(`${url}?${ids.toString()}`))
+      .pipe(map((response) => response[0]));
   }
 
   onCreate(value: {

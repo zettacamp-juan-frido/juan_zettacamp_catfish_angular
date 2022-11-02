@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogServiceService } from '../blog-service.service';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Blog } from '../blog.model';
 
@@ -25,5 +25,8 @@ export class BlogListComponent implements OnInit {
   }
   createBlog() {
     this.router.navigate(['/create']);
+  }
+  onDetail(list) {
+    this.router.navigate(['/detail', list.id]);
   }
 }

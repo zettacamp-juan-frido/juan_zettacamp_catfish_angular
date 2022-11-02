@@ -10,9 +10,10 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { MaterialModule } from '../container/material/material.module';
 import { BlogServiceService } from './blog-service.service';
 import { BlogCreateComponent } from './blog-create/blog-create.component';
+import { BlogDtailComponent } from './blog-dtail/blog-dtail.component';
 
 @NgModule({
-  declarations: [HomeBlogComponent, BlogListComponent, BlogCreateComponent],
+  declarations: [HomeBlogComponent, BlogListComponent, BlogCreateComponent, BlogDtailComponent],
   imports: [
     CommonModule,
     MaterialModule,
