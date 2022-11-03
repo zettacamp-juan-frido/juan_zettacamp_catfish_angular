@@ -1,0 +1,33 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Movies</span>
+  </mat-toolbar>
+
+  <mat-drawer-container class="container">
+    <mat-drawer #drawer mode="side" opened="true">
+      <mat-list role="list">
+        <mat-list-item
+          role="listitem"
+          routerLink="list"
+          routerLinkActive="active"
+          >Movie List
+        </mat-list-item>
+        <mat-list-item
+          role="listitem"
+          [routerLink]="['actor']"
+          routerLinkActive="active"
+        >
+          Actors</mat-list-item
+        >
+      </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+      <app-movie-list></app-movie-list>
+      <app-movie-actor></app-movie-actor>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
