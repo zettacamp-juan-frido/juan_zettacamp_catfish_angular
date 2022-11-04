@@ -6,11 +6,10 @@ import { MoviesComponent } from './movies.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: MoviesComponent,
+    path: '',
+    component: MovieListComponent,
     pathMatch: 'full',
   },
-
   {
     path: 'list',
     component: MovieListComponent,

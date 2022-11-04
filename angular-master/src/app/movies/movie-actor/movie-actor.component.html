@@ -1,1 +1,6 @@
-<p>actors</p>
+<div class="flex-display">
+  <app-actor-card
+    *ngFor="let list of actorList"
+    [dataActor]="list"
+  ></app-actor-card>
+</div>

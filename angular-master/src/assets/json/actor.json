@@ -1,0 +1,19 @@
+{
+  "actor": [
+    {
+      "id": "1",
+      "name": "Batman",
+      "img": ""
+    },
+    {
+      "id": "2",
+      "name": "juan",
+      "img": ""
+    },
+    {
+      "id": "3",
+      "name": "daniel",
+      "img": ""
+    }
+  ]
+}
