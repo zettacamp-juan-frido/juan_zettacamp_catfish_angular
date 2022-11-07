@@ -26,16 +26,17 @@ export class MentorService {
       console.log('dummy actors', this.mentors);
     });
   }
+
   getMentor(
-    id: string,
+    _id: string,
     sortOrder = 'asc',
     pageNumber = 0,
-    pageSize = 3
+    pageSize = 4
   ): Observable<Mentor[]> {
     return this.http
       .get('../../assets/json/mentor.json', {
         params: new HttpParams()
-          .set('id', id.toString())
+          .set('id', _id.toString())
           .set('sortOrder', sortOrder)
           .set('pageNumber', pageNumber.toString())
           .set('pageSize', pageSize.toString()),

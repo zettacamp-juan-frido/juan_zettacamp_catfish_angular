@@ -1,7 +1,7 @@
 import { Company } from './company.model';
 
 export interface Mentor {
-  id: string;
+  _id: string;
   email: string;
   civility: string;
   first_name: string;
