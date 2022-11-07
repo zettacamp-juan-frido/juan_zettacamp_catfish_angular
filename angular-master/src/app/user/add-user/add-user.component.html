@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>{{ "add_user" }}</h1>
+<div class="form" mat-dialog-content [formGroup]="userForm">
+  <div class="form-field">
+    <div class="form-field-label">Add User</div>
+    <mat-radio-group formControlName="civility" value="Mr">
+      <mat-radio-button value="Mr">Mr</mat-radio-button>
+      <mat-radio-button value="Mrs">Mrs</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="first_name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="last_name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      formControlName="date"
+      [disabled]="true"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="picker"
+      disabled="false"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker disabled="false"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Gender</mat-label>
+    <mat-select formControlName="gender">
+      <mat-option value="Male">Male</mat-option>
+      <mat-option value="Female">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onClose()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onAdd()" cdkFocusInitial>
+    {{ "add" }}
+  </button>
+</div>

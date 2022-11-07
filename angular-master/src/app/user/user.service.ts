@@ -26,4 +26,15 @@ export class UserService {
       console.log('data dummy user from json', this.users);
     });
   }
+
+  getUsers(): User[] {
+    return this.user.getValue();
+  }
+
+  addUser(user$: User) {
+    const users = this.getUsers();
+    users.push(user$);
+
+    this.user.next(users);
+  }
 }
