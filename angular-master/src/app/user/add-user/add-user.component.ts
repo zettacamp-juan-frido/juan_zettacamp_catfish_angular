@@ -14,7 +14,7 @@ export class AddUserComponent implements OnInit {
   dataValue: User;
   datas: User[];
   userForm = this.formBuilder.group({
-    // id: [this.dataValue.id + '1'],
+    id: [null],
     civility: [''],
     first_name: ['', Validators.required],
     last_name: ['', Validators.required],
@@ -36,6 +36,7 @@ export class AddUserComponent implements OnInit {
         this.dataValue = element;
       });
     });
+    console.log('ini data', this.data);
   }
 
   onClose() {
@@ -44,11 +45,13 @@ export class AddUserComponent implements OnInit {
 
   onAdd() {
     const isValid = this.userForm.valid;
+    this.userForm.get('id').setValue(this.datas.length + 1);
 
     if (!isValid) {
       Swal.fire({
         icon: 'error',
-        title: 'Error',
+        title: 'Data not complete',
+        text: 'Please check data your input',
       });
     } else {
       this.dialogRef.close(this.userForm.value);

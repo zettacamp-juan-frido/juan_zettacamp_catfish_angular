@@ -6,6 +6,7 @@ import { User } from 'src/app/container/model/user.model';
 import { UserService } from '../user.service';
 import { AddUserComponent } from '../add-user/add-user.component';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core/public_api';
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
@@ -13,16 +14,19 @@ import Swal from 'sweetalert2';
 })
 export class UserFormComponent implements OnInit {
   dataColum = ['no', 'name', 'email', 'gender', 'date'];
-  mentors: User[];
+  users: User[];
   dataSource = new MatTableDataSource([]);
   // mentor$: Mentor[] = [];
-  constructor(private userService: UserService, private dialog: MatDialog) {}
+  constructor(
+    private userService: UserService,
+    private dialog: MatDialog // private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.userService.$user.subscribe((value) => {
-      this.mentors = value;
+      this.users = value;
       this.dataSource.data = value;
-      console.log('data mentor', this.mentors);
+      console.log('data user', this.users);
     });
     // this.loadMentorPge();
     // console.log('lgoing id', this.mentors._id);
@@ -40,8 +44,12 @@ export class UserFormComponent implements OnInit {
 
       Swal.fire({
         icon: 'success',
-        title: 'Success',
+        title: 'Success to add data',
       });
     });
   }
+
+  // changeLanguage(lang: string) {
+  //   this.translate.use(lang);
+  // }
 }
