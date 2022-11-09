@@ -5,20 +5,18 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class PromoService {
+export class SchoolService {
   constructor(private apollo: Apollo) {}
 
-  getPromo(): Observable<any> {
+  getSchool(): Observable<any> {
     return this.apollo.query({
       query: gql`
         query {
-          GetAllPromos {
+          GetAllSchools(pagination: { page: 0, limit: 10 }) {
             _id
-            title
-            image_url
-            ref
-            sub_title
-            description
+            short_name
+            long_name
+            status
           }
         }
       `,
