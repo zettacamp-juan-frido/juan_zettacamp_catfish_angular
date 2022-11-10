@@ -1,0 +1,30 @@
+.border {
+  border: 1px solid black;
+}
+.m-10 {
+  margin: 10px;
+}
+.mt-10px {
+  margin-top: 10px;
+}
+.padding {
+  padding: 1.5rem;
+}
+.w-auto {
+  width: auto;
+}
+.w-250px {
+  width: 550px;
+}
+.h-500px {
+  height: 500px;
+}
+.h-150px {
+  height: 150px;
+}
+.h-250px {
+  height: 250px;
+}
+.m-2rem {
+  margin: 2rem;
+}
