@@ -1,0 +1,66 @@
+<h1 mat-dialog-title>Promo</h1>
+<form class="form" mat-dialog-content [formGroup]="userForm">
+  <div class="form-field">
+    <div class="form-field-label">Adding Promo</div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Ref</mat-label>
+      <input matInput formControlName="ref" />
+
+      <mat-error
+        *ngIf="!userForm.get('ref').valid && userForm.get('ref').touched"
+      >
+        Ref is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+
+      <mat-error
+        *ngIf="!userForm.get('title').valid && userForm.get('title').touched"
+      >
+        Title is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Sub Title</mat-label>
+      <input matInput formControlName="sub_title" />
+
+      <mat-error
+        *ngIf="
+          !userForm.get('sub_title').valid && userForm.get('sub_title').touched
+        "
+      >
+        Sub title is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" />
+
+      <mat-error
+        *ngIf="
+          !userForm.get('description').valid &&
+          userForm.get('description').touched
+        "
+      >
+        Description is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Put Link Image</mat-label>
+      <input matInput formControlName="image_url" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="onClose()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onAdd()" cdkFocusInitial>
+      {{ "add" }}
+    </button>
+  </div>
+</form>

@@ -49,6 +49,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 // Form Module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Sweet Alert
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 const module: any = [
   MatAutocompleteModule,
   MatCheckboxModule,
@@ -89,6 +92,8 @@ const module: any = [
   // Form Module
   FormsModule,
   ReactiveFormsModule,
+  // Sweet Alert
+  SweetAlert2Module,
 ];
 @NgModule({
   declarations: [],

@@ -1,13 +1,15 @@
 <div>
-  <p>page promo works!</p>
+  <div class="m-1rem">
+    <button mat-flat-button color="primary" (click)="onDialog()">
+      Add promo
+    </button>
+  </div>
 
-  <app-card-page
-    *ngFor="let data of pageData"
-    [listData]="data"
-  ></app-card-page>
-
-  <!-- <div>{{ pageData.title }}</div> -->
-  <div>
-    <!-- {{ pageData.description }} -->
+  <div class="flex">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <app-card-page
+      *ngFor="let data of pageData"
+      [listData]="data"
+    ></app-card-page>
   </div>
 </div>

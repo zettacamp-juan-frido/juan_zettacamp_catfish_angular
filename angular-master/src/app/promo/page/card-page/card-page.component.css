@@ -1,3 +1,6 @@
 .example-card {
   max-width: 300px;
 }
+.m-1rem {
+  margin: 1rem;
+}
