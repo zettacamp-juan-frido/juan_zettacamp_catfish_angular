@@ -1,0 +1,11 @@
+.container {
+  margin: 1rem;
+}
+
+.select-language {
+  font-size: 0.7rem;
+  width: 7em;
+}
+mat-toolbar {
+  background-color: #ffff;
+}

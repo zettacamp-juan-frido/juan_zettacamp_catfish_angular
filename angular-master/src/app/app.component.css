@@ -1,0 +1,9 @@
+.border {
+  border: 1px solid #ddd;
+}
+.p-1rem {
+  padding: 1.5rem;
+}
+.t-center {
+  text-align: center;
+}

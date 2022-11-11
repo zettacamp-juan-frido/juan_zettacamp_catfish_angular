@@ -1,0 +1,25 @@
+{
+  "movies": [
+    {
+      "id": "1",
+      "title": "Batman",
+      "subtitle": "English",
+      "description": "Batman rice",
+      "img": "https://media.suara.com/pictures/970x544/2022/02/26/59600-the-batman.jpg",
+      "actor": [
+        {
+          "name": "juan",
+          "img": ""
+        },
+        {
+          "name": "daniel",
+          "img": ""
+        },
+        {
+          "name": "aditiya",
+          "img": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+<div class="container">
+  <mat-toolbar>
+    <mat-form-field class="select-language" appearance="outline">
+      <mat-label>{{ "language" | translate }}</mat-label>
+      <mat-select
+        value="en"
+        #lang
+        (selectionChange)="changeLanguage(lang.value)"
+      >
+        <mat-option value="en">English</mat-option>
+        <mat-option value="id">Indonesia</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- <button class="add-button" mat-raised-button color="primary" (click)="openDialog()">{{ 'add_user' | translate }}</button> -->
+  </mat-toolbar>
+
+  <div>
+    <app-card-movie></app-card-movie>
+  </div>
+</div>

@@ -52,6 +52,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Sweet Alert
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
+// ngx translate
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 const module: any = [
   MatAutocompleteModule,
   MatCheckboxModule,
@@ -94,10 +103,26 @@ const module: any = [
   ReactiveFormsModule,
   // Sweet Alert
   SweetAlert2Module,
+
+  //http client module
+  HttpClientModule,
 ];
 @NgModule({
   declarations: [],
-  imports: [CommonModule, ...module],
-  exports: [...module],
+  imports: [
+    CommonModule,
+    ...module,
+
+    // ngx translate
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      defaultLanguage: 'en',
+    }),
+  ],
+  exports: [...module, TranslateModule],
 })
 export class MaterialModule {}
